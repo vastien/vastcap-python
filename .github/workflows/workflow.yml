@@ -1,0 +1,41 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'
+      
+jobs:
+  publish:
+    name: Build and Publish
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/p/vastcap
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' # Use a supported Python version
+
+      - name: Install build tools
+        run: pip install setuptools wheel twine
+
+      - name: Build package
+        run: python setup.py sdist bdist_wheel
+
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # trusted-publisher: true is the default when an OIDC ID token is available
+          # repository-url: https://upload.pypi.org/legacy/ is the default for PyPI
+          skip_existing: true # Skip publishing if the version already exists
