@@ -13,10 +13,10 @@ def main() -> None:
         is_invisible=False
     )
     
-    solution = client.solve(task)
+    solution: str = client.solve(task)
     print(f"Response token: {solution.grecaptcha_response}")
     
-    balance = client.get_balance()
+    balance: int | float = client.get_balance()
     print(f"Current balance: ${balance:.2f}")
   
 if __name__ == "__main__":
