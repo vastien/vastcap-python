@@ -12,6 +12,10 @@ from .types import (
     FunCaptchaTask
 )
 
+from .exceptions import *
+
+# I usually despise wildcard imports, but this is fine.
+
 __version__ = "1.0.0"
 __all__ = [
     "Vast",
