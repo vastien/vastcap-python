@@ -1,15 +1,10 @@
 # vastcap-python
 
-**A Python wrapper for the [Vast Captcha API](https://captcha.vast.sh)**  
-Supports both sync and async solving of many captcha challenges. Fast, minimal, and easy to use.
-
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-
+**A fast, minimal, and easy-to-use Python wrapper for the [Vast Captcha API](https://captcha.vast.sh), supporting both asynchronous and synchronous solving!**
 ---
 
 ## ✨ Features
 
-- ✅ Sync (`Vast`) and Async (`AsyncVast`) clients
 - ✅ Supports ReCaptcha v2 and hCaptcha tasks
 - ✅ Easy `solve()` method with built-in polling
 - ✅ Typed error handling & result objects
@@ -109,10 +104,11 @@ Each task must define:
 
 ## 💥 Errors
 
-Errors are raised as `VastCapException` via:
+**All** errors are derived from `VastCapException`, but you can catch more specific errors and handle them as you please. You can find more information about these errors in the API docs.
 
 ```python
-from vastcap.exceptions import VastCapException
+from vastcap import VastCapException # broad
+from vastcap import InvalidAPIKeyError # specific to api key error
 ```
 
 Check `status`, `errorCode`, and `errorDescription` in API docs or via raised exceptions.
@@ -148,4 +144,6 @@ pip install -e .[dev]
 
 ## ⚖ License
 
-MIT © [vastien](https://github.com/vastien)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
+Copyright © 2025 [vastien](https://github.com/vastien)
