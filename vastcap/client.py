@@ -12,7 +12,7 @@ from .types import (
 )
 from .exceptions import ERROR_MAPPING, VastCapException
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 class BaseClient:
     API_BASE_URL: str = "https://captcha.vast.sh/api/solver"
