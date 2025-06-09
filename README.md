@@ -1,4 +1,4 @@
-# 🧠 vastcap-python
+# vastcap-python
 
 **A Python wrapper for the [Vast Captcha API](https://captcha.vast.sh)**  
 Supports both sync and async solving of many captcha challenges. Fast, minimal, and easy to use.
@@ -38,21 +38,19 @@ Pass your API key via `Vast(api_key=...)` or `AsyncVast(api_key=...)`.
 ```python
 from vastcap import (
     Vast,
-    RecaptchaV2Task,
-    HCaptchaTask
+    TurnstileTask
 )
 
 def main() -> None:
     client = Vast(api_key="vastCap_...")
     
-    task = RecaptchaV2Task(
+    task = TurnstileTask(
         website_url="...",
         website_key="...",
-        is_invisible=False
     )
     
     solution: str = client.solve(task)
-    print(f"Response token: {solution.grecaptcha_response}")
+    print(f"Response token: {solution.turnstile_response}")
     
     balance: int | float = client.get_balance()
     print(f"Current balance: ${balance:.2f}")
@@ -73,6 +71,7 @@ async def main() -> None:
             website_url="https://discord.com/register",
             website_key="a9b5fb07-92ff-493f-86fe-352a2803b3df",
             enterprise=True,
+            is_invisible=True,
             proxy="user:pass@ip:port"
         )
     
@@ -110,13 +109,15 @@ Each task must define:
 
 ## 💥 Errors
 
-Errors are raised as `VastCapException` or mapped subclasses via:
+Errors are raised as `VastCapException` via:
 
 ```python
-from vastcap.exceptions import ERROR_MAPPING
+from vastcap.exceptions import VastCapException
 ```
 
 Check `status`, `errorCode`, and `errorDescription` in API docs or via raised exceptions.
+
+Docs: https://docs.vast.sh
 
 ---
 
@@ -138,6 +139,10 @@ git clone https://github.com/vastien/vastcap-python
 cd vastcap-python
 pip install -e .[dev]
 ```
+
+<a href="https://github.com/vastien/vastcap-python/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=vastien/vastcap-python&preview=true&max=&columns=" />
+</a>
 
 ---
 
