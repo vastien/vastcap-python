@@ -17,13 +17,13 @@ T = TypeVar("T")
 class BaseClient:
     API_BASE_URL: str = "https://captcha.vast.sh/api/solver"
     DEFAULT_TIMEOUT: float = 120.0
-    DEFAULT_polling: float = 3.0
+    DEFAULT_POLLING: float = 3.0
 
     def __init__(
         self,
         api_key: str,
         timeout: float = DEFAULT_TIMEOUT,
-        polling: float = DEFAULT_polling
+        polling: float = DEFAULT_POLLING
     ) -> None:
         self.api_key = api_key
         self.timeout = timeout
@@ -104,7 +104,7 @@ class AsyncVast(BaseClient):
         self,
         api_key: str,
         timeout: float = BaseClient.DEFAULT_TIMEOUT,
-        polling: float = BaseClient.DEFAULT_polling,
+        polling: float = BaseClient.DEFAULT_POLLING,
         session: Optional[aiohttp.ClientSession] = None
     ) -> None:
         super().__init__(api_key, timeout, polling)
