@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
-from enum import Enum, auto
+from enum import Enum
 from typing import Optional, Union, Dict, Any, TypeVar
 from typing_extensions import TypeAlias
 
