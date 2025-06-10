@@ -9,6 +9,7 @@ setup(
     packages=find_packages(),
     description='VastCap Python SDK',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     author='vastien',
     author_email='contact@vast.sh',
     license='MIT',
