@@ -46,8 +46,8 @@ class TaskSolution:
     def from_dict(cls, data: JsonDict) -> TaskSolution:
         return cls(
             grecaptcha_response=data.get("gRecaptchaResponse"),
-            hcaptcha_response=data.get("hCaptchaResponse"),
-            turnstile_response=data.get("turnstileResponse"),
+            hcaptcha_response=data.get("token"),
+            turnstile_response=data.get("token"),
             funcaptcha_response=data.get("token"),
             score=data.get("score"),
             user_agent=data.get("userAgent")
